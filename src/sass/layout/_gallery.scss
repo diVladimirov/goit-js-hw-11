@@ -1,0 +1,14 @@
+.container {
+  padding-bottom: 15px;
+}
+
+.gallery {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+
+.photo-card {
+  border: 1px solid bisque;
+}

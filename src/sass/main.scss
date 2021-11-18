@@ -1,8 +1,13 @@
 //Utils
 @import './utils/variables';
+@import './utils/hidden';
 
 //Base
 @import './base/common';
 
 //Layout
 @import './layout/form';
+@import './layout/gallery';
+
+// Components
+@import './components/buttons';
