@@ -16,7 +16,9 @@ export function renderMarkup(image) {
       .map(
         ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
           `<div class="photo-card">
+          <div class="thumb">
       <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+      </div>
       <div class="info">
         <p class="info-item">
           <b>Likes${likes}</b>
