@@ -5,17 +5,17 @@ const refs = getRefs();
 export function renderMarkup(image) {
   console.log(image);
   const imageArray = image.data.hits;
-  console.log(imageArray);
+  // console.log(imageArray);
 
-  if (imageArray.length === 0) {
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.',
-    );
-  } else {
-    const markup = imageArray
-      .map(
-        ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
-          `<div class="photo-card">
+  // if (imageArray.length === 0) {
+  //   Notiflix.Notify.failure(
+  //     'Sorry, there are no images matching your search query. Please try again.',
+  //   );
+  // } else {
+  const markup = imageArray
+    .map(
+      ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
+        `<div class="photo-card">
           <div class="thumb">
       <img src="${webformatURL}" alt="${tags}" loading="lazy" />
       </div>
@@ -38,11 +38,11 @@ export function renderMarkup(image) {
         </p>
       </div>
     </div>`,
-      )
-      .join('');
+    )
+    .join('');
 
-    refs.imageContainer.insertAdjacentHTML('beforeend', markup);
-  }
+  refs.imageContainer.insertAdjacentHTML('beforeend', markup);
+
   // const { height: cardHeight } = document
   //   .querySelector('.gallery')
   //   .firstElementChild.getBoundingClientRect();

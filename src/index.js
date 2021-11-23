@@ -23,17 +23,14 @@ function onSubmit(event) {
   clearImageContainer();
 
   fetchedImages();
-  setTimeout(() => {
-    refs.loadMoreBtn.classList.remove('visually-hidden');
-  }, 1000);
 }
 
 async function fetchedImages() {
   try {
     const { data, hasNextPage } = await imageApiService.fetchImages();
     console.log(data);
-    console.log(data.data.totalHits);
-    // console.log(renderMarkup(data));
+    console.log(data.data.hits);
+
     renderMarkup(data);
     if (!hasNextPage) {
       Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
@@ -41,6 +38,16 @@ async function fetchedImages() {
       return;
     }
 
+    if (data.data.hits.length === 0) {
+      Notiflix.Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.',
+      );
+      refs.loadMoreBtn.classList.add('visually-hidden');
+    }
+
+    setTimeout(() => {
+      refs.loadMoreBtn.classList.remove('visually-hidden');
+    }, 1000);
     // checkFreeImages(data.data.totalHits);
     // imageApiService.fetchImages().then(renderMarkup);
   } catch (error) {

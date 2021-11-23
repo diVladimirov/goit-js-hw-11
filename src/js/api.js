@@ -11,8 +11,8 @@ export default class ImageApiService {
     this.pageSize = PER_PAGE;
   }
   async fetchImages() {
-    console.log(this.pageSize);
-    console.log(this.page);
+    // console.log(this.pageSize);
+    // console.log(this.page);
     const url = `${BASE_URl}?${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${this.pageSize}&page=${this.page}`;
     this.incrementPage();
     const data = await axios.get(url);
