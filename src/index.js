@@ -23,7 +23,9 @@ function onSubmit(event) {
   clearImageContainer();
 
   fetchedImages();
-  refs.loadMoreBtn.classList.remove('visually-hidden');
+  setTimeout(() => {
+    refs.loadMoreBtn.classList.remove('visually-hidden');
+  }, 1000);
 }
 
 async function fetchedImages() {
