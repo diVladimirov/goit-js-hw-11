@@ -1,5 +1,8 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { getRefs } from './get-refs';
-import Notiflix from 'notiflix';
+
 const refs = getRefs();
 
 export function renderMarkup(image) {
@@ -15,7 +18,8 @@ export function renderMarkup(image) {
   const markup = imageArray
     .map(
       ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
-        `<div class="photo-card">
+        `<a href="${largeImageURL}">
+        <div class="photo-card">
           <div class="thumb">
       <img src="${webformatURL}" alt="${tags}" loading="lazy" />
       </div>
@@ -37,7 +41,8 @@ export function renderMarkup(image) {
           <span>${downloads}</span>
         </p>
       </div>
-    </div>`,
+    </div>
+    </a>`,
     )
     .join('');
 
@@ -51,4 +56,10 @@ export function renderMarkup(image) {
   //   top: cardHeight * 2,
   //   behavior: 'smooth',
   // });
+
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionPosition: 'botton',
+    captionDelay: 250,
+  });
 }

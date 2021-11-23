@@ -45,6 +45,8 @@ async function fetchedImages() {
       refs.loadMoreBtn.classList.add('visually-hidden');
     }
 
+    Notiflix.Notify.info(`Hooray! We found ${data.data.totalHits} images.`);
+
     setTimeout(() => {
       refs.loadMoreBtn.classList.remove('visually-hidden');
     }, 1000);
